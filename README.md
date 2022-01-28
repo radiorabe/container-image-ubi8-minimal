@@ -9,7 +9,7 @@ container provided by Red Hat.
 
 - Based on UBI8 minimal
 - Uses microdnf as a package manager
-- Establishes Trust with the RaBe Root CA
+- Establishes trust with the RaBe Root CA
 
 ## Usage
 
