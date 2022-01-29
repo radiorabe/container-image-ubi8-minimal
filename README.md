@@ -2,7 +2,7 @@
 
 The RaBe Universal Base Image 8 Minimal is a stripped down image that uses microdnf as a package.
 
-The image is based on the [Red Hat Universal Base Image 8 Minimal](https://catalog.redhat.com/software/containers/ubi8/ubi-minimal/)
+The image is based on the [Red Hat Universal Base Image 8 Minimal](https://catalog.redhat.com/software/containers/ubi8/ubi-minimal/5c359a62bed8bd75a2c3fba8)
 container provided by Red Hat.
 
 ## Features
