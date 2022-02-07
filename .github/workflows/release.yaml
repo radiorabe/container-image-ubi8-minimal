@@ -14,6 +14,11 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2.4.0
 
+      - name: Prepare additional Metadata
+        id: addtional_meta
+        run: |
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          
       - name: Prepare Image Metadata
         id: meta
         uses: docker/metadata-action@v3
@@ -31,7 +36,6 @@ jobs:
           labels: |
             name=ubi8-minimal
             summary=${{ github.event.repository.description }}
-            version=${{ steps.meta.outputs.version }}
             url=${{ github.event.repository.html_url }}
             vcs-ref=${{ github.sha }}
             revision=${{ github.sha }}
@@ -41,10 +45,6 @@ jobs:
             io.k8s.description=${{ github.event.repository.description }}
             io.openshift.tags=minimal rhel8 rabe
 
-      - name: Prepare additional Metadata
-        id: addtional_meta
-        run: |
-          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
         
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -69,4 +69,6 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            ${{ steps.meta.outputs.labels }}
+            version=${{ steps.meta.outputs.version }}
