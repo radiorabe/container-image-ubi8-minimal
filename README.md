@@ -13,7 +13,7 @@ container provided by Red Hat.
 
 ## Usage
 
-Create a downstream image from this image:
+Create a downstream image from `ghcr.io/radiorabe/ubi8-minimal`. Replace `:latest` with a specific version in the example below.
 
 ```Dockerfile
 FROM ghcr.io/radiorabe/ubi8-minimal:latest
