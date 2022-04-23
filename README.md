@@ -19,7 +19,11 @@ Create a downstream image from `ghcr.io/radiorabe/ubi8-minimal`. Replace `:lates
 FROM ghcr.io/radiorabe/ubi8-minimal:latest
 
 RUN    microdnf install -y cowsay \
-    && microdnf clean all
+    && microdnf clean all \
+    && useradd -u 1001 -r -g 0 -s /sbin/nologin \
+         -c "Default Application User" default
+         
+USER 1001
 ```
 
 ## Downstream Base Images
@@ -27,6 +31,20 @@ RUN    microdnf install -y cowsay \
 We provide specialised downstream images for select use cases.
 
 * [RaBe Python Base Image Minimal](https://github.com/radiorabe/container-image-python-minimal)
+
+## Advanced Usage
+
+To account for [CIS-DI-0008](https://github.com/goodwithtech/dockle/blob/master/CHECKPOINT.md#cis-di-0008) you may want to
+"defang" your image by running something similar to the following `chmod` after installing setuid/setgid binaries.
+
+```Dockerfile
+RUN    microdnf install -y cowsay \
+    && microdnf clean all \
+    && chmod a-s \
+         /usr/bin/* \
+         /usr/sbin/* \
+         /usr/libexec/*/*
+```
 
 ## Release Management
 
