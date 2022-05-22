@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*.*.*'
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -94,7 +96,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' && startsWith(github.event.ref, 'refs/tags/v') }}
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           labels: |
