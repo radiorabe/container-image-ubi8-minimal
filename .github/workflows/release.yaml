@@ -73,6 +73,7 @@ jobs:
         with:
           image-ref: 'ghcr.io/radiorabe/ubi8-minimal:${{ steps.meta.outputs.version }}'
           format: 'sarif'
+          ignore-unfixed: true
           output: 'trivy-results.sarif'
 
       - name: Upload Trivy scan results to GitHub Security tab
