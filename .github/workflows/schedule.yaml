@@ -1,3 +1,5 @@
+name: Scheduled updatecli
+
 on:
   schedule:
     - cron:  '13 12 * * *'
@@ -17,11 +19,6 @@ jobs:
 
       - name: Install Updatecli in the runner
         uses: updatecli/updatecli-action@v2
-
-      - name: Run Updatecli in Dry Run mode
-        run: updatecli diff
-        env:
-          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Updatecli in Apply mode
         run: updatecli apply
