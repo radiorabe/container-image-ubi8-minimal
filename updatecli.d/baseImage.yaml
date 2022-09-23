@@ -1,0 +1,15 @@
+---
+sources:
+  tagFromApi:
+    kind: shell
+    spec:
+      command: ./hack/getLatestTagFromApi.sh
+targets:
+  update:
+    name: "Update base image to latest version"
+    kind: dockerfile
+    spec:
+      file: Dockerfile
+      instruction:
+        keyword: "FROM"
+        matcher: "registry.access.redhat.com/ubi8/ubi-minimal"
