@@ -1,0 +1,29 @@
+on:
+  schedule:
+    - cron:  '13 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  updatecli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install jq in the runner
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
+
+      - name: Install Updatecli in the runner
+        uses: updatecli/updatecli-action@v2
+
+      - name: Run Updatecli in Dry Run mode
+        run: updatecli diff
+        env:
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Updatecli in Apply mode
+        run: updatecli apply
+        env:
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.RABE_ITREAKTION_GITHUB_TOKEN }}
