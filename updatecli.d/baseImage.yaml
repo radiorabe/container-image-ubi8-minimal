@@ -19,11 +19,11 @@ scms:
     spec:
       branch: "main"
       user: "it-reaktion"
-      email: "bot@updatecli.io"
+      email: "it@rabe.ch"
       owner: "radiorabe"
       repository: "container-image-ubi8-minimal"
-      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
-      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
+      username: 'it-reaktion'
 pullrequests:
   default:
     kind: "github"
