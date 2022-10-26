@@ -1,4 +1,4 @@
-name: Scheduled updatecli
+name: Scheduled tasks
 
 on:
   schedule:
@@ -24,3 +24,20 @@ jobs:
         run: updatecli apply
         env:
           UPDATECLI_GITHUB_TOKEN: ${{ secrets.RABE_ITREAKTION_GITHUB_TOKEN }}
+
+  trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Trivy vulnerability scanner on latest
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ghcr.io/radiorabe/ubi8-minimal:latest'
+          format: 'sarif'
+          ignore-unfixed: true
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
