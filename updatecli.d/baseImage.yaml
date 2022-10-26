@@ -32,7 +32,8 @@ pullrequests:
     targets:
       - "update"
     spec:
-      automerge: true
+      title: "fix: update base image"
+      automerge: false
       mergemethod: "squash"
       labels:
         - "dependencies"
