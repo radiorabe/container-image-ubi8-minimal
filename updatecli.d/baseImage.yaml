@@ -8,6 +8,7 @@ targets:
   update:
     name: "Update base image to latest version"
     kind: dockerfile
+    scmid: "origin"
     spec:
       file: Dockerfile
       instruction:
@@ -27,7 +28,7 @@ scms:
 pullrequests:
   default:
     kind: "github"
-    scmID: "origin"
+    scmid: "origin"
     targets:
       - "update"
     spec:
