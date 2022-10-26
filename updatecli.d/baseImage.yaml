@@ -13,3 +13,13 @@ targets:
       instruction:
         keyword: "FROM"
         matcher: "registry.access.redhat.com/ubi8/ubi-minimal"
+pullrequests:
+  default:
+    kind: "github"
+    targets:
+      - "update"
+    spec:
+      automerge: true
+      labels:
+        - "dependencies"
+        - "docker"
