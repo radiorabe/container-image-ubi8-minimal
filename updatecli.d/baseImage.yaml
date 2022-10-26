@@ -33,6 +33,7 @@ pullrequests:
       - "update"
     spec:
       automerge: true
+      mergemethod: "squash"
       labels:
         - "dependencies"
         - "docker"
