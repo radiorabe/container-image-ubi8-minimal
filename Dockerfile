@@ -6,5 +6,8 @@ LABEL maintainer="Radio Bern RaBe"
 COPY rabe/rabe-ca.crt /etc/pki/ca-trust/source/anchors/
 
 RUN    update-ca-trust extract \
+       # ensure we have everything available from repos \
+    && microdnf update -y \
+    && microdnf clean all \
        # CIS-DI-0006: no unnecessary files in /tmp \
     && rm /tmp/ks-script-*
