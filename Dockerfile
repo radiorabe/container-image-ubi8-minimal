@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1295
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1752068421
 
 LABEL maintainer="Radio Bern RaBe"
 
@@ -8,6 +8,4 @@ COPY rabe/rabe-ca.crt /etc/pki/ca-trust/source/anchors/
 RUN    update-ca-trust extract \
        # ensure we have everything available from repos \
     && microdnf update -y \
-    && microdnf clean all \
-       # CIS-DI-0006: no unnecessary files in /tmp \
-    && rm /tmp/ks-script-*
+    && microdnf clean all
