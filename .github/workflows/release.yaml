@@ -14,7 +14,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Prepare additional Metadata
         id: addtional_meta
@@ -77,7 +77,7 @@ jobs:
           output: 'trivy-results.sarif'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@7211b7c8077ea37d8641b6271f6a365a22a5fbfa # v4.36.0
+        uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
         if: always()
         with:
           sarif_file: 'trivy-results.sarif'
@@ -107,4 +107,4 @@ jobs:
     permissions:
       contents: read
       security-events: write # so zizmor can publish results to the Security tab
-    uses: radiorabe/actions/.github/workflows/test-github-actions.yaml@b37e51397726092d8462a2a9b676ea5a5e3a8deb # v0.44.1
+    uses: radiorabe/actions/.github/workflows/test-github-actions.yaml@5dafb461cea1f8b296d89297dc6de7bd0891f0d2 # v0.44.2
