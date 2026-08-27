@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1780550539@sha256:f3dcee1cd782de050aae0c8908b235862158e33bc7152ec78a1d75e0cb835e32
+FROM registry.access.redhat.com/ubi8/ubi-minimal:1785826003@sha256:cb964eb2bf491814a681bc9887c83d32d6d4eac7b491c5c8c7fe641a5c586a09
 
 LABEL maintainer="Radio Bern RaBe"
 
